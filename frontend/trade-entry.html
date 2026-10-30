@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trading Journal - Add Trade</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            📈 Trading Journal
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html" class="nav-item">
+                📊
+                <span>Dashboard</span>
+            </a>
+
+            <a href="trade-entry.html" class="nav-item active">
+                ➕
+                <span>Add Trade</span>
+            </a>
+
+            <a href="trade-history.html" class="nav-item">
+                🕘
+                <span>Trade History</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <p>Better decisions</p>
+            <p>build better results.</p>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- Main Content -->
+
+    <main class="dashboard-main">
+
+
+        <div class="trade-entry-page">
+
+            <div class="entry-header">
+
+                <h1>Trading Journal</h1>
+
+                <p>Add New Trade</p>
+
+            </div>
+
+
+
+            <form id="tradeForm">
+
+
+                <!-- TOP ROW -->
+
+                <div class="trade-form-grid">
+
+
+                    <!-- Basic Information -->
+
+                    <section class="form-section">
+
+                        <h3>Basic Information</h3>
+
+
+                        <label>Date</label>
+
+                        <input
+                            type="date"
+                            id="date"
+                            required
+                        >
+
+
+                        <label>Pair</label>
+
+                        <input
+                            type="text"
+                            id="pair"
+                            placeholder="XAUUSD"
+                            required
+                        >
+
+
+                        <label>Session</label>
+
+                        <select id="session">
+
+                            <option value="">
+                                Select Session
+                            </option>
+
+                            <option value="Asian">
+                                Asian
+                            </option>
+
+                            <option value="London">
+                                London
+                            </option>
+
+                            <option value="New York">
+                                New York
+                            </option>
+
+                        </select>
+
+
+                        <label>Bias</label>
+
+                        <select id="bias">
+
+                            <option value="">
+                                Select Bias
+                            </option>
+
+                            <option value="Bullish">
+                                Bullish
+                            </option>
+
+                            <option value="Bearish">
+                                Bearish
+                            </option>
+
+                            <option value="Neutral">
+                                Neutral
+                            </option>
+
+                        </select>
+
+
+                        <label>Direction</label>
+
+                        <select id="direction" required>
+
+                            <option value="">
+                                Select Direction
+                            </option>
+
+                            <option value="Buy">
+                                Buy
+                            </option>
+
+                            <option value="Sell">
+                                Sell
+                            </option>
+
+                        </select>
+
+                    </section>
+
+
+
+                    <!-- Setup -->
+
+                    <section class="form-section">
+
+                        <h3>Setup & Confluence</h3>
+
+
+                        <label>Setup Type</label>
+
+                        <input
+                            type="text"
+                            id="setup"
+                            placeholder="A+"
+                        >
+
+
+                        <label class="checkbox-field">
+
+                            <input
+                                type="checkbox"
+                                id="fvg"
+                            >
+
+                            FVG
+
+                        </label>
+
+
+                        <label class="checkbox-field">
+
+                            <input
+                                type="checkbox"
+                                id="fib"
+                            >
+
+                            Fibonacci
+
+                        </label>
+
+
+                        <label class="checkbox-field">
+
+                            <input
+                                type="checkbox"
+                                id="correctSL"
+                            >
+
+                            Correct SL
+
+                        </label>
+
+
+                        <label class="checkbox-field">
+
+                            <input
+                                type="checkbox"
+                                id="liquidityTP"
+                            >
+
+                            Liquidity TP
+
+                        </label>
+
+                    </section>
+
+
+
+                    <!-- Order Details -->
+
+                    <section class="form-section">
+
+                        <h3>Order Details</h3>
+
+
+                        <label>Order Type</label>
+
+                        <select id="orderType">
+
+                            <option value="">
+                                Select Order Type
+                            </option>
+
+                            <option value="Market">
+                                Market
+                            </option>
+
+                            <option value="Limit">
+                                Limit
+                            </option>
+
+                            <option value="Stop">
+                                Stop
+                            </option>
+
+                        </select>
+
+
+                        <label>Entry Price</label>
+
+                        <input
+                            type="number"
+                            id="entryPrice"
+                            step="any"
+                        >
+
+
+                        <label>Stop Loss</label>
+
+                        <input
+                            type="number"
+                            id="slPrice"
+                            step="any"
+                        >
+
+
+                        <label>Take Profit</label>
+
+                        <input
+                            type="number"
+                            id="tpPrice"
+                            step="any"
+                        >
+
+
+                        <label>Entry Time</label>
+
+                        <input
+                            type="time"
+                            id="entryTime"
+                        >
+
+
+                        <label>Exit Time</label>
+
+                        <input
+                            type="time"
+                            id="exitTime"
+                        >
+
+                    </section>
+
+
+                </div>
+
+
+
+                <!-- LOWER SECTION -->
+
+                <div class="lower-form-layout">
+
+
+                    <!-- LEFT COLUMN -->
+
+                    <div class="left-form-column">
+
+
+                        <!-- Risk Management -->
+
+                        <section class="form-section risk-section">
+
+                            <h3>Risk Management</h3>
+
+                            <label class="checkbox-field">
+
+                                <input
+                                    type="checkbox"
+                                    id="withinRisk"
+                                >
+
+                                Within Risk
+
+                            </label>
+
+
+                            <label>Risk %</label>
+
+                            <input
+                                type="number"
+                                id="riskPercent"
+                                step="any"
+                            >
+
+
+                            <label>Planned RR</label>
+
+                            <input
+                                type="number"
+                                id="plannedRR"
+                                step="any"
+                            >
+
+
+                            <label>Achieved RR</label>
+
+                            <input
+                                type="number"
+                                id="achievedRR"
+                                step="any"
+                            >
+
+                        </section>
+
+
+
+                        <!-- Psychology -->
+
+                        <section class="form-section psychology-section">
+
+                            <h3>Psychology</h3>
+
+                            <label class="checkbox-field">
+
+                                <input
+                                    type="checkbox"
+                                    id="emotionalTrade"
+                                >
+
+                                Emotional Trade
+
+                            </label>
+
+
+                            <label>Account</label>
+
+                            <select id="account">
+
+                                <option value="">
+                                    Select Account
+                                </option>
+
+                                <option value="Paper">
+                                    Paper
+                                </option>
+
+                                <option value="Live">
+                                    Live
+                                </option>
+
+                                <option value="Funded">
+                                    Funded
+                                </option>
+
+                            </select>
+
+                        </section>
+
+
+                    </div>
+
+
+
+                    <!-- RIGHT COLUMN -->
+
+                    <section class="form-section trade-result-section">
+
+                        <h3>Trade Result</h3>
+
+
+                        <label>Trade Screenshot</label>
+
+                        <input
+                            type="file"
+                            id="screenshot"
+                            accept="image/*"
+                        >
+
+
+                        <img
+                            id="imagePreview"
+                            src=""
+                            alt="Trade Screenshot Preview"
+                        >
+
+
+                        <label>Trade Result</label>
+
+                        <select id="result" required>
+
+                            <option value="">
+                                Select Result
+                            </option>
+
+                            <option value="Win">
+                                Win
+                            </option>
+
+                            <option value="Loss">
+                                Loss
+                            </option>
+
+                            <option value="Breakeven">
+                                Breakeven
+                            </option>
+
+                        </select>
+
+
+                        <label>P&L</label>
+
+                        <input
+                            type="number"
+                            id="pnl"
+                            step="any"
+                            required
+                        >
+
+
+                        <label>Pros</label>
+
+                        <textarea id="pros"></textarea>
+
+
+                        <label>Cons</label>
+
+                        <textarea id="cons"></textarea>
+
+
+                        <label>Reason</label>
+
+                        <textarea id="reason"></textarea>
+
+
+                        <label>Lesson</label>
+
+                        <textarea id="lesson"></textarea>
+
+                    </section>
+
+
+                </div>
+
+
+                <!-- Save Trade -->
+
+                <button type="submit">
+                    Save Trade
+                </button>
+
+                </form>
+
+            <p id="message"></p>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="js/trade-entry.js"></script>
+
+</body>
+
+</html>

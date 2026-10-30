@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trading Journal - Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+    <div class="dashboard-layout">
+
+
+        <!-- Sidebar -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                📈 Trading Journal
+            </div>
+
+
+            <nav>
+
+                <a href="dashboard.html" class="nav-item active">
+                    📊
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="trade-entry.html" class="nav-item">
+                    ➕
+                    <span>Add Trade</span>
+                </a>
+
+                <a href="trade-history.html" class="nav-item">
+                    🕘
+                    <span>Trade History</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <p>Better decisions</p>
+                <p>build better results.</p>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- Main Dashboard -->
+
+        <main class="dashboard-main">
+
+
+            <!-- Header -->
+
+            <div class="dashboard-header">
+
+                <div>
+
+                    <h1>
+                        Performance <span>Dashboard</span>
+                    </h1>
+
+                    <p>
+                        Track your progress. Improve your strategy. Build consistency.
+                    </p>
+
+                </div>
+
+
+                <div class="dashboard-symbol">
+
+                    🟡 XAUUSD
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Statistics -->
+
+            <div class="dashboard-stats">
+
+
+                <!-- Large Cards -->
+
+                <div class="stat-card large-card total-card">
+
+                    <div class="stat-icon">
+                        📊
+                    </div>
+
+                    <div>
+                        <p>Total Trades</p>
+                        <h3 id="totalTrades">0</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card large-card winning-card">
+
+                    <div class="stat-icon">
+                        🏆
+                    </div>
+
+                    <div>
+                        <p>Winning Trades</p>
+                        <h3 id="winningTrades">0</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card large-card losing-card">
+
+                    <div class="stat-icon">
+                        📉
+                    </div>
+
+                    <div>
+                        <p>Losing Trades</p>
+                        <h3 id="losingTrades">0</h3>
+                    </div>
+
+                </div>
+
+
+
+                <!-- Second Row -->
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon grey">
+                        ➖
+                    </div>
+
+                    <p>Breakeven Trades</p>
+                    <h3 id="breakevenTrades">0</h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        🎯
+                    </div>
+
+                    <p>Win Rate</p>
+                    <h3 id="winRate">0%</h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon red">
+                        ⭕
+                    </div>
+
+                    <p>Loss Rate</p>
+                    <h3 id="lossRate">0%</h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        💰
+                    </div>
+
+                    <p>Net P&L</p>
+                    <h3 id="netPnl">$0</h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        ⬆
+                    </div>
+
+                    <p>Average Win</p>
+                    <h3 id="averageWin">$0</h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon red">
+                        ⬇
+                    </div>
+
+                    <p>Average Loss</p>
+                    <h3 id="averageLoss">$0</h3>
+
+                </div>
+
+
+
+                <!-- Third Row -->
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        📊
+                    </div>
+
+                    <p>Profit Factor</p>
+                    <h3 id="profitFactor">0</h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        🏆
+                    </div>
+
+                    <p>Largest Win</p>
+                    <h3 id="largestWin">$0</h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon red">
+                        🛡
+                    </div>
+
+                    <p>Largest Loss</p>
+                    <h3 id="largestLoss">$0</h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        📉
+                    </div>
+
+                    <p>Max Drawdown</p>
+                    <h3 id="maxDrawdown">$0</h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        🧠
+                    </div>
+
+                    <p>Emotional Trades</p>
+                    <h3 id="emotionalTrades">0</h3>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- Equity Curve -->
+
+
+            <div class="chart-card large-card">
+                <div class="equity-header">
+                    <h3>Equity Curve</h3>
+
+                    <div class="total-balance">
+                        <span>Total Balance</span>
+                        <strong id="totalBalance">$0.00</strong>
+                    </div>
+                </div>
+
+                <div class="equity-chart-container">
+                    <canvas id="equityChart"></canvas>
+                </div>
+            </div>
+
+
+
+            <!-- Advanced Analytics -->
+
+            <div class="analytics-section">
+
+                <div class="analytics-title">
+                    <h2>📊 Advanced Analytics</h2>
+                    <p>Understand where your performance is coming from.</p>
+                </div>
+
+
+                <!-- Day-wise Performance -->
+
+                <div class="analytics-grid">
+
+                    <div class="analytics-card">
+
+                        <h3>📅 Day-wise Performance</h3>
+
+                        <div id="dayPerformance" class="analytics-list">
+                            <p class="no-data">No data available</p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Session Performance -->
+
+                    <div class="analytics-card">
+
+                        <h3>🕐 Session Performance</h3>
+
+                        <div id="sessionPerformance" class="analytics-list">
+                            <p class="no-data">No data available</p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Setup Performance -->
+
+                    <div class="analytics-card">
+
+                        <h3>🎯 Setup Performance</h3>
+
+                        <div id="setupPerformance" class="analytics-list">
+                            <p class="no-data">No data available</p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Pair Performance -->
+
+                    <div class="analytics-card">
+
+                        <h3>💰 Pair Performance</h3>
+
+                        <div id="pairPerformance" class="analytics-list">
+                            <p class="no-data">No data available</p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- FVG Analysis -->
+
+                    <div class="analytics-card">
+
+                        <h3>🔥 FVG Analysis</h3>
+
+                        <div id="fvgPerformance" class="analytics-list">
+                            <p class="no-data">No data available</p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Fib Analysis -->
+
+                    <div class="analytics-card">
+
+                        <h3>📐 Fib Analysis</h3>
+
+                        <div id="fibPerformance" class="analytics-list">
+                            <p class="no-data">No data available</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Psychology & Risk Analysis -->
+
+            <div class="analytics-section">
+
+                <div class="analytics-title">
+                    <h2>🧠 Psychology & Risk Analysis</h2>
+                    <br>
+                    <p>Understand how your behavior and risk management affect performance.</p>
+                </div>
+
+
+                <div class="analytics-grid">
+
+
+                    <!-- Emotional Trading -->
+
+                    <div class="analytics-card">
+
+                        <h3>🧠 Emotional Trading</h3>
+
+                        <div id="emotionalAnalysis" class="analytics-list">
+
+                            <p class="no-data">
+                                No data available
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Risk Discipline -->
+
+                    <div class="analytics-card">
+
+                        <h3>🛡️ Risk Discipline</h3>
+
+                        <div id="riskAnalysis" class="analytics-list">
+
+                            <p class="no-data">
+                                No data available
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SL Accuracy -->
+
+                    <div class="analytics-card">
+
+                        <h3>🎯 SL Accuracy</h3>
+
+                        <div id="slAnalysis" class="analytics-list">
+
+                            <p class="no-data">
+                                No data available
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Behavior vs P&L -->
+
+                    <div class="analytics-card">
+
+                        <h3>💰 Behavior vs P&L</h3>
+
+                        <div id="behaviorAnalysis" class="analytics-list">
+
+                            <p class="no-data">
+                                No data available
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- Trade Duration Analysis -->
+             
+            <section class="analytics-section">
+                <h2>Trade Duration Analysis</h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Average Winning Trade</h3>
+                        <p id="averageTpTime">--</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Average Losing Trade</h3>
+                        <p id="averageSlTime">--</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Fastest Winning Trade</h3>
+                        <p id="fastestTpTime">--</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Longest Winning Trade</h3>
+                        <p id="slowestTpTime">--</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Fastest Losing Trade</h3>
+                        <p id="fastestSlTime">--</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Longest Losing Trade</h3>
+                        <p id="slowestSlTime">--</p>
+                    </div>
+                </div>
+            </section>  
+
+            <!-- Streak & Consistency Analysis -->
+
+            <div class="analytics-section">
+
+                <div class="analytics-title">
+                    <h2>🔥 Streak & Consistency</h2>
+                    <p>Track your winning, losing and trading consistency.</p>
+                </div>
+
+
+                <div class="analytics-grid">
+
+
+                    <!-- Current Winning Streak -->
+
+                    <div class="analytics-card">
+
+                        <h3>🏆 Current Winning Streak</h3>
+
+                        <div id="currentWinningStreak" class="analytics-highlight">
+                            0 Trades
+                        </div>
+
+                    </div>
+
+
+                    <!-- Current Losing Streak -->
+
+                    <div class="analytics-card">
+
+                        <h3>💀 Current Losing Streak</h3>
+
+                        <div id="currentLosingStreak" class="analytics-highlight">
+                            0 Trades
+                        </div>
+
+                    </div>
+
+
+                    <!-- Best Winning Streak -->
+
+                    <div class="analytics-card">
+
+                        <h3>🔥 Best Winning Streak</h3>
+
+                        <div id="bestWinningStreak" class="analytics-highlight">
+                            0 Trades
+                        </div>
+
+                    </div>
+
+
+                    <!-- Worst Losing Streak -->
+
+                    <div class="analytics-card">
+
+                        <h3>📉 Worst Losing Streak</h3>
+
+                        <div id="worstLosingStreak" class="analytics-highlight">
+                            0 Trades
+                        </div>
+
+                    </div>
+
+
+                    <!-- Average Trades Per Day -->
+
+                    <div class="analytics-card">
+
+                        <h3>📅 Average Trades / Day</h3>
+
+                        <div id="averageTradesDay" class="analytics-highlight">
+                            0
+                        </div>
+
+                    </div>
+
+
+                    <!-- Best Trading Day -->
+
+                    <div class="analytics-card">
+
+                        <h3>🥇 Best Trading Day</h3>
+
+                        <div id="bestTradingDay" class="analytics-highlight">
+                            No data
+                        </div>
+
+                    </div>
+
+
+                    <!-- Worst Trading Day -->
+
+                    <div class="analytics-card">
+
+                        <h3>🔻 Worst Trading Day</h3>
+
+                        <div id="worstTradingDay" class="analytics-highlight">
+                            No data
+                        </div>
+
+                    </div>
+
+
+                    <!-- Consistency Score -->
+
+                    <div class="analytics-card">
+
+                        <h3>🎯 Consistency Score</h3>
+
+                        <div id="consistencyScore" class="analytics-highlight">
+                            0%
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Mistake Analysis -->
+
+            <div class="analytics-section">
+
+                <div class="analytics-title">
+                    <h2>⚠️ Mistake Analysis</h2>
+                    <p>Identify recurring mistakes and understand their impact on your P&L.</p>
+                </div>
+
+                <div class="analytics-grid">
+
+                    <!-- Mistake Frequency -->
+
+                    <div class="analytics-card">
+
+                        <h3>🔁 Most Frequent Mistakes</h3>
+
+                        <div id="mistakeFrequency" class="analytics-list">
+
+                            <p class="no-data">
+                                No mistakes recorded
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Mistake Cost -->
+
+                    <div class="analytics-card">
+
+                        <h3>💸 Mistake Impact on P&L</h3>
+
+                        <div id="mistakeImpact" class="analytics-list">
+
+                            <p class="no-data">
+                                No mistakes recorded
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

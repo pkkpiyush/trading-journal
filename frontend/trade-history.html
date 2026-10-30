@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trading Journal - Trade History</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+    <div class="dashboard-layout">
+
+
+        <!-- Sidebar -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                📈 Trading Journal
+            </div>
+
+
+            <nav>
+
+                <a href="dashboard.html" class="nav-item">
+                    📊
+                    <span>Dashboard</span>
+                </a>
+
+
+                <a href="trade-entry.html" class="nav-item">
+                    ➕
+                    <span>Add Trade</span>
+                </a>
+
+
+                <a href="trade-history.html" class="nav-item active">
+                    🕘
+                    <span>Trade History</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <p>Better decisions</p>
+
+                <p>build better results.</p>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- Main Content -->
+
+        <main class="dashboard-main">
+
+
+            <div class="container">
+
+
+                <h1>Trading Journal</h1>
+
+                <h2>Trade History</h2>
+
+
+
+                <!-- Search and Filters -->
+
+                <div class="filters">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search pair or setup..."
+                    >
+
+                    <select id="sessionFilter">
+                        <option value="">All Sessions</option>
+                        <option value="Asian">Asian</option>
+                        <option value="London">London</option>
+                        <option value="New York">New York</option>
+                    </select>
+
+                    <select id="directionFilter">
+                        <option value="">All Directions</option>
+                        <option value="Buy">Buy</option>
+                        <option value="Sell">Sell</option>
+                    </select>
+
+                    <select id="resultFilter">
+                        <option value="">All Results</option>
+                        <option value="profit">Profit</option>
+                        <option value="loss">Loss</option>
+                        <option value="breakeven">Breakeven</option>
+                    </select>
+
+                    <select id="setupFilter">
+                        <option value="">All Setups</option>
+                        <option value="A">A</option>
+                        <option value="A+">A+</option>
+                        <option value="A++">A++</option>
+                        <option value="B">B</option>
+                    </select>
+
+                    <select id="emotionalFilter">
+                        <option value="">All Psychology</option>
+                        <option value="normal">Normal</option>
+                        <option value="emotional">Emotional</option>
+                    </select>
+
+                    <select id="riskFilter">
+                        <option value="">All Risk Status</option>
+                        <option value="within">Within Risk</option>
+                        <option value="violation">Risk Violation</option>
+                    </select>
+
+                    <select id="fvgFilter">
+                        <option value="">FVG: All</option>
+                        <option value="yes">FVG: Yes</option>
+                        <option value="no">FVG: No</option>
+                    </select>
+
+                    <select id="fibFilter">
+                        <option value="">Fib: All</option>
+                        <option value="yes">Fib: Yes</option>
+                        <option value="no">Fib: No</option>
+                    </select>
+
+                    <select id="accountFilter">
+                        <option value="">All Accounts</option>
+                        <option value="Paper">Paper</option>
+                        <option value="Live">Live</option>
+                        <option value="Funded">Funded</option>
+                    </select>
+
+                    <button
+                        type="button"
+                        id="clearFilters"
+                        class="clear-filter-btn"
+                    >
+                        Clear Filters
+                    </button>
+
+                </div>
+
+
+
+                <div id="tradesContainer">
+
+                    <p>Loading trades...</p>
+
+                </div>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/trade-history.js"></script>
+
+</body>
+
+</html>

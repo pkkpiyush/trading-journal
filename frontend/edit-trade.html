@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trading Journal - Edit Trade</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Trading Journal</h1>
+    <h2>Edit Trade</h2>
+
+    <form id="editTradeForm">
+
+        <h3>Basic Information</h3>
+
+        <label>Date</label>
+        <input type="date" id="date" required>
+
+        <label>Pair</label>
+        <input type="text" id="pair" required>
+
+        <label>Session</label>
+        <select id="session">
+            <option value="">Select Session</option>
+            <option value="Asian">Asian</option>
+            <option value="London">London</option>
+            <option value="New York">New York</option>
+        </select>
+
+        <label>Bias</label>
+        <select id="bias">
+            <option value="">Select Bias</option>
+            <option value="Bullish">Bullish</option>
+            <option value="Bearish">Bearish</option>
+            <option value="Neutral">Neutral</option>
+        </select>
+
+        <label>Direction</label>
+        <select id="direction" required>
+            <option value="">Select Direction</option>
+            <option value="Buy">Buy</option>
+            <option value="Sell">Sell</option>
+        </select>
+
+
+        <h3>Setup & Confluence</h3>
+
+        <label>Setup Type</label>
+        <input type="text" id="setup">
+
+        <label>
+            <input type="checkbox" id="fvg">
+            FVG
+        </label>
+
+        <label>
+            <input type="checkbox" id="fib">
+            Fibonacci
+        </label>
+
+        <label>
+            <input type="checkbox" id="correctSL">
+            Correct SL
+        </label>
+
+        <label>
+            <input type="checkbox" id="liquidityTP">
+            Liquidity TP
+        </label>
+
+
+        <h3>Order Details</h3>
+
+        <label>Order Type</label>
+        <select id="orderType">
+            <option value="">Select Order Type</option>
+            <option value="Market">Market</option>
+            <option value="Limit">Limit</option>
+            <option value="Stop">Stop</option>
+        </select>
+
+        <label>Entry Price</label>
+        <input type="number" id="entryPrice" step="any">
+
+        <label>Stop Loss</label>
+        <input type="number" id="slPrice" step="any">
+
+        <label>Take Profit</label>
+        <input type="number" id="tpPrice" step="any">
+
+        <label>Entry Time</label>
+        <input type="time" id="entryTime">
+
+        <label>Exit Time</label>
+        <input type="time" id="exitTime">
+
+
+        <h3>Risk Management</h3>
+
+        <label>
+            <input type="checkbox" id="withinRisk">
+            Within Risk
+        </label>
+
+        <label>Risk %</label>
+        <input type="number" id="riskPercent" step="any">
+
+        <label>Planned RR</label>
+        <input type="number" id="plannedRR" step="any">
+
+        <label>Achieved RR</label>
+        <input type="number" id="achievedRR" step="any">
+
+
+        <h3>Psychology</h3>
+
+        <label>
+            <input type="checkbox" id="emotionalTrade">
+            Emotional Trade
+        </label>
+
+        <label>Account</label>
+
+        <select id="account">
+            <option value="">Select Account</option>
+            <option value="Paper">Paper</option>
+            <option value="Live">Live</option>
+            <option value="Funded">Funded</option>
+        </select>
+
+
+        <h3>Trade Result</h3>
+
+        <label>Trade Result</label>
+
+        <select id="result" required>
+
+            <option value="">
+                Select Result
+            </option>
+
+            <option value="Win">
+                Win
+            </option>
+
+            <option value="Loss">
+                Loss
+            </option>
+
+            <option value="Breakeven">
+                Breakeven
+            </option>
+
+        </select>
+
+
+        <label>P&L</label>
+
+        <input
+            type="number"
+            id="pnl"
+            step="any"
+            required
+        >
+
+        <label>Pros</label>
+        <textarea id="pros"></textarea>
+
+        <label>Cons</label>
+        <textarea id="cons"></textarea>
+
+        <label>Reason</label>
+        <textarea id="reason"></textarea>
+
+        <label>Lesson</label>
+        <textarea id="lesson"></textarea>
+
+
+        <h3>Trade Screenshot</h3>
+
+        <p id="currentScreenshot"></p>
+
+        <label>
+            <input type="checkbox" id="deleteScreenshot">
+            Delete existing screenshot
+        </label>
+
+        <label>Replace Screenshot</label>
+        <input type="file" id="screenshot" accept="image/*">
+
+        <img id="imagePreview" src="" alt="Screenshot Preview">
+
+
+        <button type="submit">
+            Update Trade
+        </button>
+
+    </form>
+
+    <p id="message"></p>
+
+</div>
+
+
+<script src="js/edit-trade.js"></script>
+
+</body>
+
+</html>

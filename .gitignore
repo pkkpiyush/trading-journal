@@ -1,0 +1,32 @@
+```gitignore
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Personal trading data and screenshots
+uploads/
+data/
+*.csv
+*.xlsx
+*.xls
+
+# Local databases and database backups
+*.db
+*.sqlite
+*.sqlite3
+*.bson
+*.dump
+mongodump/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+```
