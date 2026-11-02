@@ -71,6 +71,7 @@ async function loadDashboard() {
         calculateConsistencyAnalytics(trades);
         calculateMistakeAnalytics(trades);
         calculateTradeDurationAnalytics(trades);
+        displayRecentLessons(trades);
 
         // Total trades
 
@@ -1227,43 +1228,37 @@ function calculateMistakeAnalytics(trades) {
 
     const mistakeData = {};
 
-
     trades.forEach((trade) => {
 
-        if (!Array.isArray(trade.mistakes)) {
+        // Read mistakes from the existing Cons field
+        if (!trade.cons || typeof trade.cons !== "string") {
             return;
         }
 
+        // Split multiple mistakes separated by commas
+        const mistakes = trade.cons
+            .split(",")
+            .map(mistake => mistake.trim())
+            .filter(Boolean);
 
-        trade.mistakes.forEach((mistake) => {
-
-            if (!mistake) {
-                return;
-            }
-
+        mistakes.forEach((mistake) => {
 
             if (!mistakeData[mistake]) {
-
                 mistakeData[mistake] = {
                     count: 0,
                     pnl: 0
                 };
-
             }
-
 
             mistakeData[mistake].count++;
 
-            mistakeData[mistake].pnl +=
-                trade.pnl || 0;
+            mistakeData[mistake].pnl += Number(trade.pnl) || 0;
 
         });
 
     });
 
-
     displayMistakeFrequency(mistakeData);
-
     displayMistakeImpact(mistakeData);
 
 }
@@ -1511,10 +1506,62 @@ function calculateTradeDurationAnalytics(trades) {
         formatDuration(losingStats.slowest);
 }
 
+    // ==========================================
+// RECENT LESSONS
+// ==========================================
 
-const totalProfitLoss = trades.reduce((total, trade) => {
-    return total + (Number(trade.pnl) || 0);
-}, 0);
+function displayRecentLessons(trades) {
 
-document.getElementById("totalBalance").textContent =
-    "$" + totalProfitLoss.toFixed(2);
+    const container = document.getElementById("recentLessons");
+
+    container.innerHTML = "";
+
+    // Get trades that have a lesson
+    const lessons = trades
+        .filter(trade => trade.lesson && trade.lesson.trim() !== "")
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 5);
+
+    if (lessons.length === 0) {
+
+        container.textContent = "No lessons recorded yet.";
+        container.className = "analytics-list no-data";
+
+        return;
+    }
+
+    container.className = "analytics-list";
+
+    lessons.forEach(trade => {
+
+        const card = document.createElement("div");
+        card.className = "analytics-row";
+
+        const details = document.createElement("div");
+
+        const heading = document.createElement("strong");
+        heading.textContent = trade.pair || "Unknown Pair";
+
+        const date = document.createElement("small");
+
+        const tradeDate = new Date(trade.date);
+
+        date.textContent = isNaN(tradeDate)
+            ? "Date unavailable"
+            : tradeDate.toLocaleDateString();
+
+        const lesson = document.createElement("p");
+        lesson.textContent = trade.lesson;
+
+        details.appendChild(heading);
+        details.appendChild(document.createElement("br"));
+        details.appendChild(date);
+        details.appendChild(lesson);
+
+        card.appendChild(details);
+
+        container.appendChild(card);
+
+    });
+
+}

@@ -165,10 +165,14 @@ async function loadTrade() {
                 >
             `;
 
+            deleteScreenshotLabel.style.display = "block";
+
         } else {
 
             currentScreenshot.textContent =
                 "No screenshot attached.";
+
+            deleteScreenshotLabel.style.display = "none";
 
         }
 
@@ -386,3 +390,6 @@ editTradeForm.addEventListener("submit", async (event) => {
     }
 
 });
+
+const deleteScreenshotLabel =
+    document.getElementById("deleteScreenshotLabel");

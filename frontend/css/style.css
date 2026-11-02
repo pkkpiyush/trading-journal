@@ -2177,3 +2177,12 @@ body:has(.dashboard-layout) {
         align-items: flex-start;
     }
 }
+
+.lessons-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.lessons-grid .analytics-card {
+    grid-column: 1 / -1;
+    width: 100%;
+}

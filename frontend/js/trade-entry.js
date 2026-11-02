@@ -15,6 +15,22 @@ screenshotInput.addEventListener("change", () => {
 tradeForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    // Automatically determine P&L sign from trade result
+    const selectedResult = document.getElementById("result").value;
+    const enteredPnl = Math.abs(Number(document.getElementById("pnl").value));
+
+    let finalPnl = 0;
+
+    if (selectedResult === "Win") {
+        finalPnl = enteredPnl;
+    } 
+    else if (selectedResult === "Loss") {
+        finalPnl = -enteredPnl;
+    } 
+    else if (selectedResult === "Breakeven") {
+        finalPnl = 0;
+    }
+
     const tradeData = {
         date: document.getElementById("date").value,
         pair: document.getElementById("pair").value,
@@ -45,9 +61,9 @@ tradeForm.addEventListener("submit", async (event) => {
 
         account: document.getElementById("account").value,
 
-        result: document.getElementById("result").value,
+        result: selectedResult,
 
-        pnl: Number(document.getElementById("pnl").value),
+        pnl: finalPnl,
 
         pros: document.getElementById("pros").value,
         cons: document.getElementById("cons").value,
